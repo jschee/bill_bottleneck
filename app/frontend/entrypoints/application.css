@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-tan {
+	background-color: #FCF4F1;
+}
+
+.voted {
+	@apply stroke-pink-600 !important;
+}
+
+
+.progress-container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  position: relative;
+}
+
+.upvote-section {
+  position: relative;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.downvote-section {
+  position: relative;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;  
+}
+
+.tooltip {
+  position: absolute;
+  top: -35px; /* Move the tooltip above the progress bar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+}

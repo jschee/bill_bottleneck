@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "#{dom_id(@bill_post)}-voting" do %>
+	<%= turbo_frame_tag "#{dom_id(@bill_post)}-voting" do %>
+		<%= render "pages/vote", 
+				bill_post: @bill_post, 
+				vote_result: @vote_result %>
+	<% end %>
+<% end %>

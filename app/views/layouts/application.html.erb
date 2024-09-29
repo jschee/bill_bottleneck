@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BillBottleneck</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application', data: { "turbo-track": "reload" } %>
+    <%= vite_stylesheet_tag 'application', data: { "turbo-track": "reload" } %>
+    <%#= turbo_refreshes_with method: :morph, scroll: :preserve  %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
+
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
+  </head>
+
+  <body class="h-full bg-tan">
+    <div class="flex-1">
+      <div class="min-h-full">
+        <%= render 'shared/navbar' %>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<div class="progress-container">
+  <div class="upvote-section bg-green-500" style="width: <%= upvote_percentage %>%;">
+    <div class="tooltip">Up: <%= upvote_percentage %>%</div>
+  </div>
+  <div class="downvote-section bg-gray-300" style="width: <%= downvote_percentage %>%;">
+    <div class="tooltip">Down: <%= downvote_percentage %>%</div>
+  </div>
+</div>
+<div class="text-center">Total Votes: <%= number_to_human(total_votes, units: { thousand: 'k', million: 'M' }, precision: 1) %>
+</div>
