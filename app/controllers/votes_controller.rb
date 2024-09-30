@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VotesController < ApplicationController
   before_action :set_bill_post
   before_action :set_vote_type
@@ -9,9 +11,7 @@ class VotesController < ApplicationController
     Vote.create!(vote_params)
     @vote_result = cookies["bill_post_#{@bill_post.id}_vote"]
 
-    respond_to do |format|
-      format.turbo_stream
-    end
+    respond_to(&:turbo_stream)
   end
 
   private

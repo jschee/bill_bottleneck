@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BillPostsController < ApplicationController
   before_action :set_filter_tags
 
@@ -6,9 +8,7 @@ class BillPostsController < ApplicationController
     @bill_posts = @bill_posts.joins(:tags).where(tags: { name: @filter_tags }) if @filter_tags.present?
     @bill_posts = @bill_posts.order(created_at: :desc)
 
-    respond_to do |format|
-      format.turbo_stream
-    end
+    respond_to(&:turbo_stream)
   end
 
   private

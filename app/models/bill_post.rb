@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BillPost < ApplicationRecord
   has_many :votes
   has_many :taggings, as: :taggable, dependent: :destroy
@@ -6,7 +8,7 @@ class BillPost < ApplicationRecord
   def calculate_vote_percentage
     # need to turn this into a job that runs every 3 hours
     # and updates column up_vote_percentage and down_vote_percentage
-    return { upvote_percentage: 0, downvote_percentage: 0 } if total_votes == 0
+    return { upvote_percentage: 0, downvote_percentage: 0 } if total_votes.zero?
 
     upvote_percentage = (total_up_votes.to_f / total_votes * 100).round
     downvote_percentage = (total_down_votes.to_f / total_votes * 100).round

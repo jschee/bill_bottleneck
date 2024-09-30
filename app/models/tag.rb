@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :taggable, through: :taggings, source: :taggable
@@ -13,5 +15,5 @@ class Tag < ApplicationRecord
     'Education',
     'Military and Veteran',
     'Large Coporations'
-  ]
+  ].freeze
 end
