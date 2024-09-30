@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop: disable Layout/LineLength
+
 # Be sure to restart your server when you modify this file.
 
 # Define an application-wide content security policy.
@@ -34,3 +36,4 @@
 #   # Report violations without enforcing the policy.
 #   # config.content_security_policy_report_only = true
 # end
+# rubocop: enable Layout/LineLength

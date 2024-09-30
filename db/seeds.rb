@@ -2,6 +2,7 @@
 
 require 'faker'
 
+# rubocop: disable Metrics/BlockLength
 20.times do
   bill_post = BillPost.create(title: "#{Faker::Company.name} announces
   														#{Faker::Commerce.product_name} #{Faker::Lorem.word}",
@@ -39,3 +40,4 @@ require 'faker'
     end
   end
 end
+# rubocop: enable Metrics/BlockLength
