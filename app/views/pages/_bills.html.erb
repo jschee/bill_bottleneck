@@ -16,7 +16,7 @@
 		    </div>
 		    <br>
 
-		   	<% bill_post.tags.each do |tag| %>
+		   	<% bill_post.tags.sort.each do |tag| %>
 		    	<span class="inline-flex items-center rounded-md shadow bg-pink-600 text-white px-2 py-1 text-lg text-gray-600 mx-1"><%= format_tag_name(tag.name) %></span>
 		    <% end %>
 

@@ -5,7 +5,7 @@ class BillPostsController < ApplicationController
 
   def index
     @bill_posts = BillPost.all
-    @bill_posts = @bill_posts.joins(:tags).where(tags: { name: @filter_tags }) if @filter_tags.present?
+    @bill_posts = @bill_posts.joins(:tags).where(tags: { name: @filter_tags }).distinct if @filter_tags.present?
     @bill_posts = @bill_posts.order(created_at: :desc)
 
     respond_to(&:turbo_stream)
