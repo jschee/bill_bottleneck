@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "bills" do %>
+	<%= turbo_frame_tag "bills", target: '_top' do %>
+		<%= render "pages/bills", bill_posts: @bill_posts %>
+	<% end %>
+<% end %>
