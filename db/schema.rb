@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_09_29_191244) do
+ActiveRecord::Schema[8.0].define(version: 2024_09_30_054815) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,6 +20,40 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_29_191244) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "bills", force: :cascade do |t|
+    t.integer "congress"
+    t.string "bill_type"
+    t.string "number"
+    t.string "origin_chamber"
+    t.string "origin_chamber_code"
+    t.string "title"
+    t.string "update_date"
+    t.string "update_date_including_text"
+    t.jsonb "latest_action"
+    t.string "url"
+    t.jsonb "cached_query_response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "congress_people", force: :cascade do |t|
+    t.string "bioguide_id"
+    t.string "birth_year"
+    t.string "direct_order_name"
+    t.string "first_name"
+    t.string "honorific_name"
+    t.string "inverted_order_name"
+    t.string "last_name"
+    t.string "state"
+    t.jsonb "cached_query_response"
+    t.string "image_url"
+    t.string "image_attribution"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bioguide_id"], name: "index_congress_people_on_bioguide_id", unique: true
   end
 
   create_table "solid_cache_entries", force: :cascade do |t|

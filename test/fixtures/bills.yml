@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  congress: 1
+  latestAction: 
+  number: MyString
+  originChamber: MyString
+  OriginChamberCode: MyString
+  title: MyString
+  type: 
+  updateDate: MyString
+  updateDateIncludingText: MyString
+  url: MyString
+
+two:
+  congress: 1
+  latestAction: 
+  number: MyString
+  originChamber: MyString
+  OriginChamberCode: MyString
+  title: MyString
+  type: 
+  updateDate: MyString
+  updateDateIncludingText: MyString
+  url: MyString

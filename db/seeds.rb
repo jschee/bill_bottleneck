@@ -1,41 +1,19 @@
 # frozen_string_literal: true
 
-require 'faker'
+load('db/seed_congress_person.rb') if CongressPerson.count < 500
+load('db/seed_bills.rb') if Bill.count < 18_155
 
-20.times do
-  bill_post = BillPost.create(title: "#{Faker::Company.name} announces
-  														#{Faker::Commerce.product_name} #{Faker::Lorem.word}",
-                              description: Faker::Lorem.sentence(word_count: 6))
+# NOTE----------
 
-  rand(1..10).times do
-    Vote.create(
-      bill_post: bill_post,
-      vote_type: %i[up_vote down_vote].sample
-    )
-  end
+# One bill has many of all of the following:
+# Should we support all? or just some?
 
-  tags = [
-	 	"nationwide",
-	  "local state",
-	  "health",
-	  "finance",
-	  "income groups",
-	  "education",
-	  "science and technology",
-	  "military and veteran",
-	  "small businesses", 
-		"large coporations"
-  ].shuffle
-
-  number_of_tags = rand(1..4)
-
-  number_of_tags.times do
-  	loop do
-  		tag = tags.sample
-  		unless bill_post.tags.exists?(name: tag)
-  			bill_post.add_tag(tag)
-  			break
-  		end
-  	end
-  end
-end
+# actions
+# amendments
+# committees
+# cosponsors
+# related_bills
+# subjects
+# summaries
+# text
+# titles
