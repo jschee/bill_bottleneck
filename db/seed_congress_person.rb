@@ -26,11 +26,4 @@ def detailed_congress_person_data
   end
 end
 
-
 seed_members(118)
-
-
-
-
-
-

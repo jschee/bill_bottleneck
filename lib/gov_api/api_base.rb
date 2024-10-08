@@ -7,7 +7,8 @@ class GovApi::ApiBase
   API_KEY = Rails.application.credentials.dig(:gov_api_key)
 
   def get(endpoint, params = {})
-    uri = build_uri(endpoint, params)
+    uri = build_uri(endpoint.downcase, params)
+    puts "Requesting #{uri}"
     response = RestClient.get(uri.to_s)
     handle_response(response)
   end
