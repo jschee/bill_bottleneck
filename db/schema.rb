@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_09_30_054815) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_09_022738) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "bill_actions", force: :cascade do |t|
+    t.string "action_code"
+    t.string "action_date"
+    t.jsonb "source_system"
+    t.string "text"
+    t.string "action_type"
+    t.bigint "bill_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_bill_actions_on_bill_id"
+  end
 
   create_table "bill_posts", force: :cascade do |t|
     t.string "title"
@@ -20,6 +32,29 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_30_054815) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "bill_summaries", force: :cascade do |t|
+    t.bigint "bill_id", null: false
+    t.string "action_date"
+    t.string "action_desc"
+    t.string "text"
+    t.string "update_date"
+    t.string "version_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_bill_summaries_on_bill_id"
+  end
+
+  create_table "bill_text_versions", force: :cascade do |t|
+    t.date "date"
+    t.string "text_type"
+    t.jsonb "formats"
+    t.string "text"
+    t.bigint "bill_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_bill_text_versions_on_bill_id"
   end
 
   create_table "bills", force: :cascade do |t|
@@ -92,6 +127,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_30_054815) do
     t.index ["bill_post_id"], name: "index_votes_on_bill_post_id"
   end
 
+  add_foreign_key "bill_actions", "bills"
+  add_foreign_key "bill_summaries", "bills"
+  add_foreign_key "bill_text_versions", "bills"
   add_foreign_key "taggings", "tags"
   add_foreign_key "votes", "bill_posts"
 end

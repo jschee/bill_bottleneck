@@ -44,7 +44,7 @@ class GovApi
     end
 
     def bill_summaries(congress, bill_type, bill_number, params = {})
-      get "bill/#{congress}/#{bill_type}/#{bill_number}/actions", params.merge({ limit: 250 })
+      get "bill/#{congress}/#{bill_type}/#{bill_number}/summaries", params.merge({ limit: 250 })
     end
 
     def bill_text(congress, bill_type, bill_number, params = {})
