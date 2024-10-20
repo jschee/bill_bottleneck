@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "bill-posts-page-#{@pagy.page}" do %>
+	<%= render "bills", bill_posts: @bill_posts %>
+	<%= render partial: "next_page" %>
+<% end %>s

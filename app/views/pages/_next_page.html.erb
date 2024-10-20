@@ -1,0 +1,10 @@
+<% if @pagy.page == @pagy.last %>
+	<p class="text-center">fin</p>
+<% else %>
+	<%= turbo_frame_tag "bill-posts-page-#{@pagy.next}",
+											loading: :lazy,
+											src: pagy_url_for(@pagy, @pagy.next),
+											target: "_top" do %>
+	<p class="text-center">loading...</p>
+	<% end %>
+<% end %>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'pages#home'
-  resources :votes, only: :create
+  resources :votes, only: [:create] do
+    delete 'destroy_vote', on: :collection, as: :destroy_vote
+  end
   resources :bill_posts, only: :index
 end
