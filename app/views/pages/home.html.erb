@@ -7,6 +7,12 @@
 			<%= turbo_frame_tag "bills", target: '_top' do %>
 				<%= render "bills", bill_posts: @bill_posts %>
 			<% end %>
+			<%= turbo_frame_tag "bill-posts-page-#{@pagy.next}",
+													loading: :lazy,
+													src: pagy_url_for(@pagy, @pagy.next),
+													target: "_top" do %>
+			<p class="text-center">loading...</p>
+			<% end %>
 		</main>
 	</div>
 </div>

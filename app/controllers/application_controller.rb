@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+
   helper_method :format_tag_name
 
   def format_tag_name(tag_name)
