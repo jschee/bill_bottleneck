@@ -5,17 +5,20 @@ require 'json'
 class GovApi::ApiBase
   BASE_URL = 'https://api.congress.gov/v3/'.freeze
   API_KEY = Rails.application.credentials.dig(:gov_api_key)
+  RATE_LIMIT = 5_000
 
   def get(endpoint, params = {})
     uri = build_uri(endpoint.downcase, params)
-    puts "Requesting #{uri}"
+    puts "Requesting #{endpoint.downcase}"
     response = RestClient.get(uri.to_s)
+    respect_rate_limit
     handle_response(response)
   end
 
   def post(endpoint, body = {})
     uri = URI.join(BASE_URL, endpoint)
     response = RestClient.post(uri.to_s, body)
+    respect_rate_limit
     handle_response(response)
   end
 
@@ -35,5 +38,10 @@ class GovApi::ApiBase
     else
       raise "Error: #{response.code} - #{response.message} - #{response.body}"
     end
+  end
+
+  def respect_rate_limit
+    seconds_per_request = 3_600.0 / RATE_LIMIT
+    sleep(seconds_per_request)
   end
 end

@@ -1,6 +1,16 @@
 class Bill < ApplicationRecord
   validates :congress, presence: true
-  validates :number, presence: true, uniqueness: [:congress]
+  validates :bill_type, presence: true
+  validates :number, presence: true, uniqueness: %i[congress bill_type]
+
+  has_many :actions
+  has_many :summaries
+  has_many :text_versions
+
+  scope :without_actions,         -> { left_joins(:actions).where(actions: { id: nil }) }
+  scope :without_summaries,       -> { left_joins(:summaries).where(summaries: { id: nil }) }
+  scope :without_text_versions,   -> { left_joins(:text_versions).where(text_versions: { id: nil }) }
+
   API = GovApi::Bill.new
 
   def sync_data!
@@ -46,5 +56,13 @@ class Bill < ApplicationRecord
 
   def fetch_titles
     API.bill_titles(congress, bill_type, number)
+  end
+
+  class << self
+    def api_match(params)
+      Bill.find_by(congress: params['congress'],
+                   number: params['number'],
+                   bill_type: params['type'])
+    end
   end
 end

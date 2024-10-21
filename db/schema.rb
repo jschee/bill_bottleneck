@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_09_022738) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_16_055729) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -23,6 +23,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_09_022738) do
     t.bigint "bill_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "action_time"
+    t.jsonb "recorded_votes"
+    t.jsonb "calendar_number"
+    t.jsonb "committees"
     t.index ["bill_id"], name: "index_bill_actions_on_bill_id"
   end
 
