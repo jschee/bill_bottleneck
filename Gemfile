@@ -13,6 +13,7 @@ gem 'turbo-rails', '~> 2.0.10'
 gem 'solid_cable'
 gem 'solid_cache'
 gem 'solid_queue'
+gem "rest-client"
 
 # gem "redis", ">= 4.0.1"
 # gem "kredis"

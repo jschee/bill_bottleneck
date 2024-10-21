@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bioguide_id: MyString
+  birth_year: MyString
+  direct_order_name: MyString
+  first_name: MyString
+  honorific_name: MyString
+  inverted_order_name: MyString
+  last_name: MyString
+  state: MyString
+  cached_query_response: 
+  image_url: MyString
+  image_caption: MyString
+
+two:
+  bioguide_id: MyString
+  birth_year: MyString
+  direct_order_name: MyString
+  first_name: MyString
+  honorific_name: MyString
+  inverted_order_name: MyString
+  last_name: MyString
+  state: MyString
+  cached_query_response: 
+  image_url: MyString
+  image_caption: MyString
