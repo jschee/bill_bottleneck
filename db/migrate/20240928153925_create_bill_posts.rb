@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBillPosts < ActiveRecord::Migration[8.0]
   def change
     create_table :bill_posts do |t|

@@ -1,0 +1,24 @@
+<p class="text-xl font-bold">Filter by tags</p>
+<br>
+<%= form_with(url: bill_posts_path, method: :get, class: "space-y-5", data: { controller: "filter", turbo_stream: true }) do %>
+	<% Tag::TAGS.sort.each do |tag| %>
+    <div class="relative flex items-start">
+      <div class="flex h-6 items-center">
+      	<%= check_box_tag "filter[]", 
+      										tag,
+      										params[:tag]&.include?(tag),
+      										id: "#{tag}",
+      										class: "hover:cursor-pointer h-5 w-5 rounded border-2 border-gray-300 text-pink-600 focus:ring-pink-600",
+      										data: {
+      											action: "change->filter#submit"
+      										} %>
+
+      </div>
+      <div class="ml-3 text-lg leading-6">
+      	<%= label_tag tag, 
+      								tag,
+      								class: "hover:cursor-pointer font-medium text-gray-900" %>
+      </div>
+    </div>
+	<% end %>
+<% end %>
